@@ -1,0 +1,43 @@
+
+
+ 
+ <div id="newPost" style="margin-top:100px;">
+    <h1>New Post</h1>
+ 
+ 
+     <form name="Form" id="contact-form" (ngSubmit)="create(form)" #form="ngForm" class="contact-form">
+         <div class="row">
+             <div class="col-md-4">
+                 <div class="form-group" [ngClass]="{'has-error': title.invalid && title.touched}">
+                     <input type="text"   class="form-control" [(ngModel)]="Title" name="title" placeholder="Title" required  #title="ngModel" >
+                    <p *ngIf="title.invalid && title.touched">Enter the Title</p>
+                    
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="form-group" [ngClass]="{'has-error': author.invalid && author.touched}">
+                     <input type="text"   class="form-control" [(ngModel)]="Author" name="author" placeholder="author" required #author="ngModel">
+                     <p *ngIf="author.invalid && author.touched">Enter the Author</p>
+                 </div>
+             </div>
+           
+         </div>
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="form-group" [ngClass]="{'has-error': description.invalid && description.touched}">
+                     <textarea class="form-control textarea" rows="3" [(ngModel)]="Description" name="description" placeholder="Description" required #description="ngModel"></textarea>
+                     <p *ngIf="description.invalid && description.touched">Enter the Description</p>
+                 </div>
+             </div>
+         </div>
+         <div class="row">
+             <div class="col-md-12">
+ 
+             </div>
+         </div>
+         <button   type="submit" id="addPost" class="btn main-btn pull-right" [disabled]="!form.valid"  >Send a message</button>
+         <a routerLink="/" class="btn btn-warning">Back to Blog</a>
+     </form>
+ 
+ 
+ </div>

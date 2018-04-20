@@ -1,0 +1,45 @@
+
+
+
+
+
+   <div style="margin-top:100px;">
+    <h1>PERSONAL BLOG</h1> 
+ 
+
+
+<div id="postlist" *ngFor="let item of postModel">
+        
+        <div class="panel">
+    
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h3 class="pull-left">
+                                    <h3><a [routerLink]="['post', item.postId]" class="nav-link">{{item.title}}</a></h3>
+                            </h3>
+                        </div>
+                        <div class="col-sm-3">
+
+                            <h4 class="pull-right">
+                                <small>Author: {{item.author}}</small>
+                                <span class="glyphicon glyphicon-remove-circle" (click)="dell(item.postId)"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                 {{item.description}}  
+            </div>
+            <div class="panel-footer">
+     
+                <h4>
+                         
+                         <small class="pull-right">{{item.dateTime}}</small>
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

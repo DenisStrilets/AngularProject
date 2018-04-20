@@ -1,0 +1,106 @@
+
+
+
+<div id="postlist" style="margin-top:100px;">
+    <div class="panel">
+        <div class="panel-heading">
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h3 class="pull-left">{{postModel.title}}</h3>
+                    </div>
+                    <div class="col-sm-3">
+
+                        <h4 class="pull-right">
+                                 
+                            <small>Author {{postModel.author}}</small>
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </h4>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel-body">
+            {{postModel.description}}
+        </div>
+        <div class="panel-footer">
+            <h4>
+                 <span> {{commentlength}} </span>
+                <span class=" glyphicon glyphicon-comment"></span>
+                <small class="pull-right">{{postModel.dateTime}}</small>
+            </h4>
+
+        </div>
+    </div>
+
+</div>
+
+
+ <div *ngIf="commentlength>0">
+<h1><em>Comments:</em></h1>
+</div>
+
+
+<div id="postlist" *ngFor="let item of postModel.comment">
+
+   <div class="panel">
+
+       <div class="panel-heading">
+           <div class="text-center">
+               <div class="row">
+                   <div class="col-sm-9">
+                       <h3 class="pull-left">
+                               <small>{{item.author}}</small>
+                               
+                       </h3>
+                   </div>
+                   <div class="col-sm-3">
+                       
+                       <h4 class="pull-right">
+                           <small> {{item.dateTime}}</small>
+                           <span class="glyphicon glyphicon-remove-circle" (click)="delete(item.commentId)"></span>
+                       </h4>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="panel-body">
+           {{item.commentText}}
+       </div>
+       <div class="panel-footer">
+
+       </div>
+   </div>
+</div> 
+
+
+ 
+<div>
+ <h3>Add Comment:</h3>
+    <form name="Form" role="form" id="contact-form" (ngSubmit)="addComment()" class="contact-form">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" [(ngModel)]="author" class="form-control" name="Name" placeholder="Name" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea class="form-control textarea" [(ngModel)]="commentText" rows="3" name="Commentary" placeholder="Comment" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn main-btn pull-right">Send</button>
+                <a routerLink="/" class="btn btn-warning">Back to Blog</a>
+            </div>
+        </div>
+    </form>
+
+</div>
